@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LISTA DE EMPLEADOS</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"</script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Lista de Empleados</h1>
+
+                    <p><a href="/public">INICIO</a></p>
+
+                    <form method="GET action="/">
+                        <input type="email" name="email" placeholder="Ingresar Email" required="required">
+                        <input type="submit">
+                    </form>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>position</th>
+                            <th>salary</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if (!empty($employees)) {
+
+                            foreach($employees as $employee) { ?>
+                                <tr>
+                                    <td><?php echo $employee['name'] ?></td>
+                                    <td><?php echo $employee['email'] ?></td>
+                                    <td><?php echo $employee['position'] ?></td>
+                                    <td><?php echo $employee['salary'] ?></td>
+                                    <td><a href="/public/detail/<?php echo $employee['id'] ?>">Detalle</a></td>
+                                </tr>
+                                <?php
+                            }
+                        } else {
+                            echo "no hay resultados para esta busqueda";
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
